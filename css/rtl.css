@@ -1,0 +1,109 @@
+/* RTL support for Arabic language */
+html.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Navbar RTL adjustments */
+html.rtl .nav-menu {
+  flex-direction: row-reverse;
+}
+
+html.rtl .menu-wrap {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html.rtl .nav-dropdown-toggle {
+  flex-direction: row-reverse;
+}
+
+html.rtl .nav-dropdown-icon {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+html.rtl .language-switcher a {
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+/* Hide Weglot default dropdown */
+.weglot-container {
+  display: none !important;
+}
+
+/* Language Switcher Styling */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.language-switcher a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 10px;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.language-switcher a:hover {
+  opacity: 1;
+}
+
+.language-switcher a.active {
+  opacity: 1;
+  font-weight: 700;
+}
+
+/* RTL specific overrides for the entire site */
+html.rtl .rectangle.left {
+  left: auto;
+  right: 0;
+}
+
+html.rtl .rectangle.right-top {
+  right: auto;
+  left: 0;
+}
+
+html.rtl .rectangle.left-bottom {
+  left: auto;
+  right: 0;
+}
+
+/* Form elements RTL */
+html.rtl input,
+html.rtl textarea {
+  text-align: right;
+}
+
+/* FlexBox and Grid RTL adjustments */
+html.rtl .w-layout-layout {
+  direction: rtl;
+}
+
+/* Adjust margins and paddings for RTL */
+html.rtl .nav-link,
+html.rtl .nav-dropdown-link {
+  margin-right: 0;
+  margin-left: 20px;
+}
+
+html.rtl .hero-screen-heading,
+html.rtl .banner-paragraph,
+html.rtl .h5-green {
+  text-align: right;
+}
+
+/* Cart RTL adjustments */
+html.rtl .w-commerce-commercecartitem {
+  flex-direction: row-reverse;
+}
+
+/* Button icon adjustments */
+html.rtl .w-button {
+  direction: rtl;
+} 
