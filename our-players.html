@@ -205,15 +205,15 @@
         <div class="our-team-text-wrapper our-team-page">
           <h2>Our Squad</h2>
           <div class="our-team-paragraph-wrapper">
-            <p class="paragraph-large">Behind Undefeated stands a dedicated team of individuals who are passionate about sports, motivation, and making a positive impact. Meet the faces driving our mission forward.</p>
+            <p class="paragraph-large">Behind Sports Vision stands a dedicated team of individuals who are passionate about sports, motivation, and making a positive impact. Meet the faces driving our mission forward.</p>
           </div>
         </div>
-        <div class="players-cards-wrapper">
+        <div class="players-cards-wrapper" id="players-cards-wrapper">
           <div class="w-dyn-list">
             <div role="list" class="collection-list-6 w-dyn-items">
               <div role="listitem" class="w-dyn-item">
                 <div data-w-id="80290e41-4e11-49df-7b77-b514cdcb766a" style="opacity:0" class="team-member-wrapper">
-                  <a href="#" class="team-member-photo w-inline-block"><img src="https://uploads-ssl.webflow.com/65c1fc011cb990c0c2ad742e/65fd4ed617baef5d2b0eabbc_logan-weaver-lgnwvr-M5YKACTmdpo-unsplash%201.jpg" loading="lazy" alt="Player Photo" class="team-member-photo w-dyn-bind-empty"></a>
+                  <a href="#" class="team-member-photo w-inline-block"><img src="https://i.ibb.co/WvqCKz7Z/Adobe-Express-file-1.jpg" loading="lazy" alt="Player Photo" class="team-member-photo w-dyn-bind-empty"></a>
                   <div class="our-team-member-name-wrapper">
                     <div class="member-name-wrapper">
                       <a href="#" class="member-name-link"></a>
@@ -329,52 +329,95 @@
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6822c54974afef131c86bfa5" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <script src="js/update-nav.js" type="text/javascript"></script>
-  <script src="js/stagewise-integration.js" type="text/javascript"></script>
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script>
-    // TODO: Replace with your actual Firebase config
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      // ...other config
+      apiKey: "AIzaSyCp8lAoWk02iuAUGSn3E30RA9uj-5Tos5E",
+      authDomain: "vsport-e86e0.firebaseapp.com",
+      databaseURL: "https://vsport-e86e0-default-rtdb.firebaseio.com",
+      projectId: "vsport-e86e0",
+      storageBucket: "vsport-e86e0.appspot.com",
+      messagingSenderId: "531520967244",
+      appId: "1:531520967244:web:b4c86af4a22e67f0d59ae9",
+      measurementId: "G-85BSNTP37S"
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // Fetch and render players
-    db.collection("players").get().then((querySnapshot) => {
-      const wrapper = document.getElementById("players-cards-wrapper");
-      if (!wrapper) return;
-      wrapper.innerHTML = "";
-      querySnapshot.forEach((doc) => {
-        const player = doc.data();
-        const socials = `
-          ${player.instagram ? `<a href="${player.instagram}" target="_blank" class="player-social-media-icon instagram-icon w-inline-block"></a>` : ""}
-          ${player.facebook ? `<a href="${player.facebook}" target="_blank" class="player-social-media-icon facebook-icon w-inline-block"></a>` : ""}
-          ${player.twitter ? `<a href="${player.twitter}" target="_blank" class="player-social-media-icon x-icon w-inline-block"></a>` : ""}
-        `;
-        wrapper.innerHTML += `
-          <div class="team-member-wrapper">
-            <a href="#" class="team-member-photo w-inline-block">
-              <img src="${player.photoUrl}" alt="${player.name} Photo" class="team-member-photo">
-            </a>
-            <div class="our-team-member-name-wrapper">
-              <div class="member-name-wrapper">
-                <a href="#" class="member-name-link">${player.name}</a>
-              </div>
-              <p class="uppercase-paragraph">${player.position || ""}</p>
-              <div class="players-social-media-wrapper">
-                ${socials}
+    document.addEventListener("DOMContentLoaded", function() {
+      // Make the main section visible first
+      const mainSection = document.querySelector('[data-w-id="19b29c4c-e5c5-d215-1dd9-eb2cd6333471"]');
+      if (mainSection) {
+        mainSection.style.opacity = '1';
+      }
+      
+      db.collection("players").get().then((querySnapshot) => {
+        const players = [];
+        querySnapshot.forEach((doc) => players.push(doc.data()));
+        console.log("Players from Firebase:", players); // Debug log
+        
+        // Get the container where we'll add player cards
+        const playersContainer = document.querySelector('#players-cards-wrapper .collection-list-6.w-dyn-items');
+        if (!playersContainer) {
+          console.error("Players container not found");
+          return;
+        }
+        
+        // Clear existing content
+        playersContainer.innerHTML = '';
+        
+        // Create a player card for each player
+        players.forEach((player, index) => {
+          const fullName = `${player.first_name || ""} ${player.last_name || ""}`.trim();
+          
+          // Create the player card HTML
+          const playerCard = document.createElement('div');
+          playerCard.setAttribute('role', 'listitem');
+          playerCard.className = 'w-dyn-item';
+          
+          playerCard.innerHTML = `
+            <div data-w-id="80290e41-4e11-49df-7b77-b514cdcb766a" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="team-member-wrapper">
+              <a href="#" class="team-member-photo w-inline-block">
+                <img src="${player.image || 'https://via.placeholder.com/271x281?text=No+Image'}" 
+                     loading="lazy" 
+                     alt="${fullName} Photo" 
+                     class="team-member-photo"
+                     onerror="this.src='https://via.placeholder.com/271x281?text=No+Image'">
+              </a>
+              <div class="our-team-member-name-wrapper">
+                <div class="member-name-wrapper">
+                  <a href="#" class="member-name-link">${fullName}</a>
+                </div>
+                <p class="uppercase-paragraph">${player.position || ''}</p>
+                <div class="players-social-media-wrapper">
+                  <a href="${player.instagram || 'https://www.instagram.com/'}" target="_blank" class="player-social-media-icon instagram-icon w-inline-block"></a>
+                  <a href="${player.facebook || 'https://www.facebook.com/'}" target="_blank" class="player-social-media-icon facebook-icon w-inline-block"></a>
+                  <a href="${player.twitter || 'https://twitter.com/'}" target="_blank" class="player-social-media-icon x-icon w-inline-block"></a>
+                </div>
               </div>
             </div>
-          </div>
-        `;
+          `;
+          
+          // Add the player card to the container
+          playersContainer.appendChild(playerCard);
+          
+          console.log(`✅ Added player card for: ${fullName}`);
+        });
+        
+        console.log(`🎉 Successfully created ${players.length} player cards`);
+        
+      }).catch(error => {
+        console.error("Error fetching players:", error);
       });
     });
   </script>
   <!-- End Firebase Player Fetch -->
+  <script src="js/brand-name-replacer.js" type="text/javascript"></script>
+
+  <script src="js/hide-menu-items.js" type="text/javascript"></script>
+
+
 </body>
 </html>

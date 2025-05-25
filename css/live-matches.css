@@ -1,0 +1,370 @@
+/* Live Matches Countdown Styles */
+.timer-wrapper {
+    position: relative;
+}
+
+.timer-wrapper.loading {
+    opacity: 0.7;
+}
+
+.timer-wrapper.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #c7f849;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 10;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Countdown animation */
+.timer-cell .h3-cta {
+    transition: all 0.3s ease;
+}
+
+.timer-cell .h3-cta.updating {
+    transform: scale(1.1);
+    color: #c7f849;
+}
+
+/* Status indicators */
+.match-status-wrapper {
+    margin-bottom: 5px;
+}
+
+.live-indicator, .finished-indicator, .upcoming-indicator, .soon-indicator {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.live-indicator {
+    background-color: #ff4444;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.finished-indicator {
+    background-color: #666;
+    color: white;
+}
+
+.upcoming-indicator {
+    background-color: #c7f849;
+    color: #0e0e0e;
+}
+
+.soon-indicator {
+    background-color: #ffa500;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7);
+    }
+    
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 68, 68, 0);
+    }
+    
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
+    }
+}
+
+/* Team names animation */
+.h3-cta {
+    transition: all 0.5s ease;
+}
+
+.h3-cta.team-updating {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.h3-cta.team-updated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Error state */
+.timer-wrapper.error {
+    border: 1px solid #ff4444;
+    background-color: rgba(255, 68, 68, 0.1);
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.error-state {
+    background-color: rgba(255, 68, 68, 0.1);
+    border: 1px solid #ff4444;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.error-state .error-message {
+    color: #ff4444;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.error-state .secondary-button {
+    background-color: #ff4444;
+    border-color: #ff4444;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.error-state .secondary-button:hover {
+    background-color: #cc3333;
+    border-color: #cc3333;
+}
+
+/* Future Matches Section */
+.matches-table {
+    position: relative;
+}
+
+.matches-table.loading {
+    opacity: 0.7;
+}
+
+.match-row {
+    transition: all 0.3s ease;
+}
+
+.match-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(199, 248, 73, 0.2);
+}
+
+.team .h4-table {
+    transition: color 0.3s ease;
+}
+
+.match-row:hover .team .h4-table {
+    color: #c7f849;
+}
+
+/* Match loading animation */
+.match-row.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.match-row.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid #c7f849;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 10;
+}
+
+/* Staggered animation for match list */
+.match-row {
+    animation: slideInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .timer-wrapper.loading::after {
+        width: 16px;
+        height: 16px;
+        margin: -8px 0 0 -8px;
+    }
+    
+    .match-row:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* Webflow Animation Overrides - Force visibility for Future Matches */
+[data-w-id="9e6f4900-86b9-8241-b057-1a0893834744"],
+[data-w-id="4af92ccc-3862-99d6-7366-b5dcc7b7d804"],
+[data-w-id="fdc23f1b-15c5-53a8-6dc3-4368d023c747"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    transform: translateY(0) !important;
+}
+
+/* Hide the featured match section completely */
+.next-match-collection-list-wrapper {
+    display: none !important;
+}
+
+/* Ensure Future Matches section is always visible */
+.last-matches-section {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Ensure matches table and containers are visible */
+.matches-table,
+.matches-collection-list-wrapper {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Ensure dynamic content containers are visible */
+.w-dyn-items,
+.w-dyn-list {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Ensure match rows are visible */
+.match-row,
+.next-match-row {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+}
+
+/* Force visibility on team names and match data */
+.teams-names,
+.match-date {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Ensure team elements are visible */
+.team,
+.h4-table,
+.h4-black {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Override any Webflow hiding of populated content */
+.w-dyn-bind-empty {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline !important;
+}
+
+/* Ensure paragraphs and text elements are visible */
+.uppercase-paragraph,
+.paragraph-black,
+.brand-color-paragraph {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Adjust match row layout without View Details button */
+.match-row.home-1 {
+    display: grid;
+    grid-template-columns: 2fr auto 2fr 3fr;
+    gap: 20px;
+    padding: 15px 20px;
+    align-items: center;
+}
+
+/* Hide View Details button wrapper if it exists */
+.details-button-wrapper {
+    display: none !important;
+}
+
+/* Hide all team logos */
+.team-logo-large {
+    display: none !important;
+}
+
+/* Clean team layout without logos - Home team column */
+.teams-names.home-1 .team:first-child {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+/* Clean team layout without logos - Away team column */
+.teams-names.home-1 .team:last-child {
+    text-align: left;
+    justify-content: flex-start;
+}
+
+/* Clean team layout without logos */
+.team {
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure team names are properly styled */
+.team .h4-table {
+    margin: 0;
+    font-weight: bold;
+    color: inherit;
+    white-space: nowrap;
+}
+
+/* Center the VS text in its column */
+.teams-names .uppercase-paragraph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Better spacing for teams section - make it span 3 columns */
+.teams-names.home-1 {
+    display: contents;
+}
+
+/* Match date styling - right aligned in its column */
+.match-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    justify-content: flex-start;
+}
+
+/* Hide the decorative rectangles that might interfere */
+.match-date .rectangle {
+    display: none;
+} 

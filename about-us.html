@@ -38,6 +38,27 @@
       opacity: 0 !important;
       pointer-events: none !important;
     }
+    
+    /* Force LTR for podcast sections - never affected by RTL */
+    .podcast-section,
+    .podcast-section *,
+    .podcast-container,
+    .podcast-container *,
+    .podcasts-wrapper,
+    .podcasts-wrapper *,
+    .podcast-table,
+    .podcast-table *,
+    .podcasts-text-wrapper,
+    .podcasts-text-wrapper *,
+    .podcasts-title-wrapper,
+    .podcasts-title-wrapper *,
+    .about-us-background-photo,
+    .trapezoid-wrapper,
+    .trapezoid-wrapper *,
+    .about-us-trapezoid {
+      direction: ltr !important;
+      text-align: left !important;
+    }
   </style>
 </head>
 <body>
@@ -188,15 +209,17 @@
   <section class="about-us-banner-section">
     <div class="w-layout-blockcontainer base-container about-us-banner-container w-container">
       <h1 data-text-content="Where sports, motivation, and community unite to inspire greatness.">Where sports, motivation, and community unite to inspire greatness.</h1>
-      <p data-w-id="8c10a2b4-6834-9956-4e2a-b00c89afd591" style="opacity:0" class="paragraph-large about-us-banner-paragraph">Undefeated is your ultimate destination for sports enthusiasts and motivation seekers alike. Dive into a world where passion meets inspiration, empowering you to push boundaries, overcome challenges, and achieve greatness.</p><img src="images/Union-1.png" loading="lazy" style="opacity:0" data-w-id="7907ebf1-59fa-3a2d-58ae-53fee6fd7539" alt="" class="about-us-decorative-rectangle">
+      <p data-w-id="8c10a2b4-6834-9956-4e2a-b00c89afd591" style="opacity:0" class="paragraph-large about-us-banner-paragraph">Sports Vision your ultimate destination for sports enthusiasts and motivation seekers alike. Dive into a world where passion meets inspiration, empowering you to push boundaries, overcome challenges, and achieve greatness.</p><img src="images/Union-1.png" loading="lazy" style="opacity:0" data-w-id="7907ebf1-59fa-3a2d-58ae-53fee6fd7539" alt="" class="about-us-decorative-rectangle">
       <div data-w-id="d19ef250-a979-21ae-c496-41b1c7b8ff62" style="opacity:0" class="banner-buttons-wrapper">
         <a href="contact-us.html" class="primary-button w-button">Contact Us</a>
+      <!--
         <a href="tickets.html" class="secondary-button w-button">Buy Tickets</a>
+      -->
       </div>
     </div>
   </section>
   <section class="podcast-section">
-    <div class="w-layout-blockcontainer full-width-container w-container"><img class="about-us-background-photo" src="images/vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2_1vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2.webp" alt="Photo of a basketball player" style="opacity:0" sizes="(max-width: 1919px) 100vw, 1918.2578125px" data-w-id="ee07e5ba-61d8-0413-3a1e-0e0d3a9d31ec" loading="lazy" srcset="images/vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2_1vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2.webp 500w, images/vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2_1vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2.webp 800w, images/vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2_1vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2.webp 1080w, images/vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2_1vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2.webp 1600w, images/vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2_1vu-huy-hoang-chu-9OzQCwuaJhc-unsplash-1-2.webp 1921w">
+    <div class="w-layout-blockcontainer full-width-container w-container"><img class="about-us-background-photo" src="images//aavision/about_us.jpg" alt="Photo of a basketball player" style="opacity:0" sizes="(max-width: 1919px) 100vw, 1918.2578125px" data-w-id="ee07e5ba-61d8-0413-3a1e-0e0d3a9d31ec" loading="lazy" srcset="images//aavision/about_us.jpg 500w, images//aavision/about_us.jpg 800w, images//aavision/about_us.jpg 1080w, images//aavision/about_us.jpg 1600w, images//aavision/about_us.jpg 1921w">
       <div class="trapezoid-wrapper">
         <div class="about-us-trapezoid"></div>
       </div>
@@ -207,7 +230,7 @@
       <div class="about-us-mission-wrapper">
         <p data-w-id="cb1c5c50-699b-c791-1c0b-e224dd4a04a6" style="opacity:0" class="uppercase-paragraph green-paragraph">Our Mission</p>
         <div class="about-us-mission-title">
-          <h2 data-text-content="At Undefeated, our mission is clear: to empower individuals to push beyond their limits, unlock their full potential, and achieve excellence in every aspect of life.">At Undefeated, our mission is clear: to empower individuals to push beyond their limits, unlock their full potential, and achieve excellence in every aspect of life.</h2>
+          <h2 data-text-content="At Sports Vision, our mission is clear: to empower individuals to push beyond their limits, unlock their full potential, and achieve excellence in every aspect of life.">At Sports Vision, our mission is clear: to empower individuals to push beyond their limits, unlock their full potential, and achieve excellence in every aspect of life.</h2>
           <p data-text-content="Through our platform, we aim to cultivate a culture of resilience, determination, and sportsmanship, instilling the belief that with dedication and perseverance, anything is possible." data-w-id="d8a5a780-f4aa-f6bd-4207-c8057ac59497" style="opacity:0" class="paragraph-large">Through our platform, we aim to cultivate a culture of resilience, determination, and sportsmanship, instilling the belief that with dedication and perseverance, anything is possible.</p>
         </div>
       </div>
@@ -222,7 +245,7 @@
         </div>
         <div id="w-node-_53f27ac1-bff0-7068-5c7c-48cec2eaeb03-1c86bff5" class="about-us-mission-card"><img src="images/love.svg" loading="lazy" style="opacity:0" data-w-id="53f27ac1-bff0-7068-5c7c-48cec2eaeb04" alt="" class="our-mission-icon">
           <h3 data-w-id="53f27ac1-bff0-7068-5c7c-48cec2eaeb05" style="opacity:0">Commitment</h3>
-          <p data-text-content="At Undefeated, we are committed to fostering a positive and inclusive environment where everyone feels valued, supported, and encouraged to chase their dreams." data-w-id="53f27ac1-bff0-7068-5c7c-48cec2eaeb07" style="opacity:0" class="paragraph-large mission-card-paragraph">At Undefeated, we are committed to fostering a positive and inclusive environment where everyone feels valued, supported, and encouraged to chase their dreams.</p>
+          <p data-text-content="At Sports Vision, we are committed to fostering a positive and inclusive environment where everyone feels valued, supported, and encouraged to chase their dreams." data-w-id="53f27ac1-bff0-7068-5c7c-48cec2eaeb07" style="opacity:0" class="paragraph-large mission-card-paragraph">At Sports Vision, we are committed to fostering a positive and inclusive environment where everyone feels valued, supported, and encouraged to chase their dreams.</p>
         </div>
       </div>
     </div>
@@ -233,7 +256,9 @@
         <div class="podcast-table">
           <div id="w-node-_96429d68-9f72-22d1-4492-59049a6d08b3-1c86bff5" class="rectangle left-bottom"></div>
           <div class="podcasts-text-wrapper">
+            <!--
             <p class="uppercase-paragraph">listen our latest podcasts</p>
+            -->
             <div class="rectangle left-bottom"></div>
             <div class="rectangle right-top"></div>
             <div class="rectangle right-bottom"></div>
@@ -241,7 +266,7 @@
           </div>
           <div class="podcasts-title-wrapper">
             <h2 data-w-id="96429d68-9f72-22d1-4492-59049a6d08bc" style="opacity:0" class="podcast-title">Giving up is simply not an option<span class="brand-color-span">.</span></h2>
-            <a href="#" data-w-id="e5ead898-ab4c-7704-72a4-e4bf8515f53e" style="opacity:0;background-color:rgb(199,248,73)" class="button-with-icon w-inline-block w-lightbox">
+           <!--  <a href="#" data-w-id="e5ead898-ab4c-7704-72a4-e4bf8515f53e" style="opacity:0;background-color:rgb(199,248,73)" class="button-with-icon w-inline-block w-lightbox">
               <h6 style="color:rgb(14,14,14)" class="button-text">Listen Podcasts</h6><img src="images/play-1.svg" loading="lazy" style="filter:invert(0%)" alt="Play Icon" class="play-icon">
               <script type="application/json" class="w-json">{
   "items": [
@@ -256,7 +281,10 @@
     }
   ],
   "group": ""
-}</script>
+}
+-->
+
+</script>
             </a>
           </div>
         </div>
@@ -299,49 +327,50 @@
       <div class="our-team-block"><img src="images/Union-1.png" loading="lazy" alt="" class="our-team-decoration"><img class="our-team-image" src="images/Mask-group-3.png" alt="Basketball game" style="opacity:0" sizes="(max-width: 767px) 100vw, (max-width: 991px) 90vw, (max-width: 1279px) 77vw, (max-width: 1919px) 60vw, 960px" data-w-id="f78fcca6-9375-b57a-2701-c67d3f70d33e" loading="lazy" srcset="images/Mask-group-3-p-500.png 500w, images/Mask-group-3.png 946w">
         <div class="our-team-text-wrapper">
           <h2 class="about-us-heading">Our Team</h2>
-          <p data-text-content="Behind Undefeated stands a dedicated team of individuals who are passionate about sports, motivation, and making a positive impact. Meet the faces driving our mission forward" class="paragraph-large">Behind Undefeated stands a dedicated team of individuals who are passionate about sports, motivation, and making a positive impact. Meet the faces driving our mission forward</p>
+          <p data-text-content="Behind Sports Vision stands a dedicated team of individuals who are passionate about sports, motivation, and making a positive impact. Meet the faces driving our mission forward" class="paragraph-large">Behind Vision Sports stands a dedicated team of individuals who are passionate about sports, motivation, and making a positive impact. Meet the faces driving our mission forward</p>
         </div>
         <div class="w-layout-grid our-team-table">
-          <div data-w-id="f3b42426-7c36-88f5-7a36-420e175e0e4b" style="opacity:0" class="team-member-wrapper"><img src="images/Rectangle-1116_1Rectangle-1116.webp" loading="lazy" alt="A man in a black T-shirt" class="team-member-photo">
+          <div data-w-id="f3b42426-7c36-88f5-7a36-420e175e0e4b" style="opacity:0" class="team-member-wrapper"><img src="images/aavision/bureau/خالد الشهري.jpg" loading="lazy" alt="A man in a black T-shirt" class="team-member-photo">
             <div class="our-team-member-name-wrapper">
-              <h6 class="h6-white">Zaire Press</h6>
-              <p class="uppercase-paragraph">CEO</p>
+              <h6 class="h6-white">خالد الشهري</h6>
+              <!-- <p class="uppercase-paragraph">CEO</p> -->
             </div>
           </div>
-          <div data-w-id="d43de89a-8197-b525-e8be-400388bd45d6" style="opacity:0" class="team-member-wrapper"><img src="images/Rectangle-1118_1Rectangle-1118.webp" loading="lazy" alt="A woman in a black shirt" class="team-member-photo">
+          <div data-w-id="d43de89a-8197-b525-e8be-400388bd45d6" style="opacity:0" class="team-member-wrapper"><img src="images/aavision/bureau/عبد االعزيز المطيري.jpg" loading="lazy" alt="A woman in a black shirt" class="team-member-photo">
             <div class="our-team-member-name-wrapper">
-              <h6 class="h6-white">Tatiana Rhiel Madsen</h6>
-              <p class="uppercase-paragraph">Sales manager</p>
+              <h6 class="h6-white">عبد العزيز المطيري</h6>
+              <!-- <p class="uppercase-paragraph">Sales manager</p> -->
             </div>
           </div>
-          <div data-w-id="d3e5e554-7cf5-ac99-21ae-cd8a94be0a5d" style="opacity:0" class="team-member-wrapper"><img src="images/Rectangle-1117_1Rectangle-1117.webp" loading="lazy" alt="A man in glasses" class="team-member-photo">
+          <div data-w-id="d3e5e554-7cf5-ac99-21ae-cd8a94be0a5d" style="opacity:0" class="team-member-wrapper"><img src="images/aavision/bureau/قاسم المطيري.jpg" loading="lazy" alt="A man in glasses" class="team-member-photo">
             <div class="our-team-member-name-wrapper">
-              <h6 class="h6-white">Wilson Mango</h6>
-              <p class="uppercase-paragraph">strength in numbers</p>
+              <h6 class="h6-white">قاسم المطيري</h6>
+              <!-- <p class="uppercase-paragraph">strength in numbers</p> -->
             </div>
           </div>
-          <div data-w-id="4b616e60-35b5-f344-9a65-5774798b20e7" style="opacity:0" class="team-member-wrapper"><img src="images/Rectangle-1119_1Rectangle-1119.webp" loading="lazy" alt="A woman with an afro hairstyle" class="team-member-photo">
+          <div data-w-id="4b616e60-35b5-f344-9a65-5774798b20e7" style="opacity:0" class="team-member-wrapper"><img src="images/aavision/bureau/منصور الظفيري.jpg" loading="lazy" alt="A woman with an afro hairstyle" class="team-member-photo">
             <div class="our-team-member-name-wrapper">
-              <h6 class="h6-white">Mira Saris</h6>
-              <p class="uppercase-paragraph">Project manager</p>
+              <h6 class="h6-white">منصور الظفيري</h6>
+              <!-- <p class="uppercase-paragraph">Project manager</p> -->
             </div>
           </div>
-          <div data-w-id="28a60322-e7b6-25d3-fd21-2996afd5d7a2" style="opacity:0" class="team-member-wrapper"><img src="images/Rectangle-1120_1Rectangle-1120.webp" loading="lazy" alt="Curly man" class="team-member-photo">
+          <div data-w-id="28a60322-e7b6-25d3-fd21-2996afd5d7a2" style="opacity:0" class="team-member-wrapper"><img src="images/aavision/bureau/يوسف_.jpg" loading="lazy" alt="Curly man" class="team-member-photo">
             <div class="our-team-member-name-wrapper">
-              <h6 class="h6-white">Ryan Mango</h6>
-              <p class="uppercase-paragraph">Personal trainer</p>
+              <h6 class="h6-white">يوسف</h6>
+              <!-- <p class="uppercase-paragraph">Personal trainer</p> -->
             </div>
           </div>
-          <div data-w-id="2d9810a6-fac7-d79c-f672-52c2b0e58601" style="opacity:0" class="team-member-wrapper"><img src="images/Rectangle-1121_1Rectangle-1121.webp" loading="lazy" alt="Curly woman" class="team-member-photo">
+          <div data-w-id="2d9810a6-fac7-d79c-f672-52c2b0e58601" style="opacity:0" class="team-member-wrapper"><img src="images/aavision/bureau/ذياب_.jpg" loading="lazy" alt="Curly woman" class="team-member-photo">
             <div class="our-team-member-name-wrapper">
-              <h6 class="h6-white">Makenna Westervelt</h6>
-              <p class="uppercase-paragraph">Business analytic</p>
+              <h6 class="h6-white">ذياب</h6>
+              <!-- <p class="uppercase-paragraph">Business analytic</p> -->
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  <!--
   <section class="section">
     <div class="w-layout-blockcontainer base-container home-3-news-title-container w-container">
       <h2 data-w-id="91622db5-a811-0a4f-f604-248f29583282" style="opacity:0">Latest team updates</h2>
@@ -425,6 +454,7 @@
       </div>
     </div>
   </section>
+  -->
   <section class="form-section">
     <div data-w-id="f6481d1c-d23d-6785-7124-2b4da538988a" style="opacity:0" class="w-layout-blockcontainer base-container w-container">
       <div class="form-wrapper">
@@ -443,6 +473,7 @@
       </div>
     </div>
   </section>
+  
   <div class="footer">
     <div class="base-container w-container">
       <div class="footer-wrapper">
@@ -507,5 +538,8 @@
   <script src="js/webflow.js" type="text/javascript"></script>
   <script src="js/update-nav.js" type="text/javascript"></script>
   <script src="js/stagewise-integration.js" type="text/javascript"></script>
+  <script src="js/brand-name-replacer.js" type="text/javascript"></script>
+  <script src="js/hide-menu-items.js" type="text/javascript"></script>
+
 </body>
 </html>

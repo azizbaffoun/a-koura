@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Switcher Test</title>
+    <link href="css/rtl.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            background: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .navbar-test {
+            background: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-right-block-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .content-test {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .status {
+            background: #444;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Language Switcher Test</h1>
+        
+        <div class="status">
+            <strong>Current Language:</strong> <span id="current-lang">Loading...</span><br>
+            <strong>Browser Language:</strong> <span id="browser-lang"></span><br>
+            <strong>Stored Language:</strong> <span id="stored-lang"></span>
+        </div>
+
+        <div class="navbar-test">
+            <div>
+                <h3>Sports Vision</h3>
+            </div>
+            <div class="header-right-block-wrapper">
+                <div class="language-switcher">
+                    <a href="#" data-lang="en" class="active">EN</a>
+                    <a href="#" data-lang="ar">AR</a>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 4px; margin-left: 15px;">
+                    <span style="font-size: 12px;">Cart</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-test">
+            <h2 data-text-content="Welcome to Sports Vision">Welcome to Sports Vision</h2>
+            <p data-text-content="This is a test page to verify the language switcher functionality with flags.">
+                This is a test page to verify the language switcher functionality with flags.
+            </p>
+            <p data-text-content="The flag should change based on the current language - showing the opposite language flag.">
+                The flag should change based on the current language - showing the opposite language flag.
+            </p>
+        </div>
+
+        <div class="content-test">
+            <h3>Expected Behavior:</h3>
+            <ul>
+                <li>If browser language is Arabic → Site opens in Arabic → Shows USA flag</li>
+                <li>If browser language is not Arabic → Site opens in English → Shows Saudi flag</li>
+                <li>Clicking flag switches language and updates the displayed flag</li>
+                <li>Language preference is stored in localStorage</li>
+            </ul>
+            
+            <h4>RTL Positioning Test:</h4>
+            <ul>
+                <li><strong>English mode:</strong> Saudi flag should be on the right side</li>
+                <li><strong>Arabic mode:</strong> American flag should be on the left side (not too close to right)</li>
+                <li>The cart element should help show the proper spacing</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/language-switcher.js"></script>
+    <script>
+        // Display browser and stored language info
+        document.getElementById('browser-lang').textContent = navigator.language || navigator.userLanguage;
+        document.getElementById('stored-lang').textContent = localStorage.getItem('preferredLanguage') || 'None';
+        
+        // Update current language display
+        function updateCurrentLangDisplay() {
+            const htmlLang = document.documentElement.getAttribute('dir') === 'rtl' ? 'Arabic' : 'English';
+            document.getElementById('current-lang').textContent = htmlLang;
+        }
+        
+        // Initial update
+        setTimeout(updateCurrentLangDisplay, 500);
+        
+        // Listen for language changes
+        const observer = new MutationObserver(updateCurrentLangDisplay);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['dir', 'class'] });
+    </script>
+</body>
+</html> 
