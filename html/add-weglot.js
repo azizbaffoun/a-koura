@@ -1,69 +1,71 @@
-/**
- * Add Weglot Translation Script to All HTML Files
- * This script uses Node.js to add the Weglot translation script to all HTML files in the directory
- * 
- * To use: 
- * 1. Install Node.js if not already installed
- * 2. Open a terminal/command prompt in this directory
- * 3. Run: node add-weglot.js
- */
-
 const fs = require('fs');
 const path = require('path');
 
-// The Weglot script to be added
-const weglotScript = `
+function addWeglotScript(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    
+    // Skip if Weglot already included
+    if(content.includes('weglot.min.js')) {
+      console.log(`Weglot already in ${filePath}`);
+      return;
+    } 
+    
+    // Find the </head> tag
+    const headEndPos = content.indexOf('</head>');
+    if(headEndPos === -1) {
+      console.log(`No </head> found in ${filePath}`);
+      return;
+    }
+    
+    // Prepare Weglot script with our custom integration
+    const weglotScript = `  <!-- Weglot Translation Integration -->
   <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      Weglot.initialize({
+    Weglot.initialize({
         api_key: 'wg_951e1f37be4f7f34083b855332ae37da6',
-        originalLanguage: 'en',
-        destinationLanguages: ['ar', 'fr', 'es'],
-        hideLanguageButton: false,
-        buttonPosition: 'bottom-right'
-      });
+        hide_switcher: true
     });
   </script>
+  <!-- Custom language switcher for integration with Weglot -->
+  <script src="js/weglot-custom.js" type="text/javascript"></script>
+  <script src="js/language-switcher.js" type="text/javascript"></script>
+  <script src="js/arabic-translations.js" type="text/javascript"></script>
 `;
-
-// Get all HTML files in the current directory
-const htmlFiles = fs.readdirSync('.')
-  .filter(file => file.endsWith('.html'));
-
-console.log(`Found ${htmlFiles.length} HTML files to process.`);
-
-// Process each HTML file
-htmlFiles.forEach(file => {
-  try {
-    const filePath = path.join('.', file);
-    let content = fs.readFileSync(filePath, 'utf8');
     
-    // Check if Weglot is already in the file
-    if (content.includes('cdn.weglot.com/weglot.min.js')) {
-      console.log(`${file}: Weglot script already present, skipping.`);
-      return;
-    }
-    
-    // Find the closing head tag and insert Weglot before it
-    const headCloseTagIndex = content.indexOf('</head>');
-    if (headCloseTagIndex === -1) {
-      console.log(`${file}: Could not find </head> tag, skipping.`);
-      return;
-    }
-    
-    // Insert Weglot script before the closing head tag
-    const updatedContent = 
-      content.slice(0, headCloseTagIndex) + 
-      weglotScript + 
-      content.slice(headCloseTagIndex);
-    
-    // Write the updated content back to the file
-    fs.writeFileSync(filePath, updatedContent, 'utf8');
-    console.log(`${file}: Successfully added Weglot script.`);
+    // Insert script before </head>
+    const newContent = content.slice(0, headEndPos) + weglotScript + content.slice(headEndPos);
+    fs.writeFileSync(filePath, newContent, 'utf8');
+    console.log(`Added Weglot to ${filePath}`);
   } catch (error) {
-    console.error(`Error processing ${file}:`, error);
+    console.error(`Error processing ${filePath}:`, error.message);
   }
-});
+}
 
-console.log('Done processing all HTML files.'); 
+function processDirectory(dir) {
+  try {
+    const files = fs.readdirSync(dir);
+    for(const file of files) {
+      const filePath = path.join(dir, file);
+      
+      // Skip .git and other hidden directories
+      if(file.startsWith('.')) continue;
+      
+      try {
+        const stats = fs.statSync(filePath);
+        if(stats.isDirectory()) {
+          processDirectory(filePath);
+        } else if(file.endsWith('.html')) {
+          addWeglotScript(filePath);
+        }
+      } catch (error) {
+        console.error(`Error accessing ${filePath}:`, error.message);
+      }
+    }
+  } catch (error) {
+    console.error(`Error reading directory ${dir}:`, error.message);
+  }
+}
+
+// Start processing from current directory
+processDirectory('.'); 

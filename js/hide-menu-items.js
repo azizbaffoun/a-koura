@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Hide Menu Items Script
  * Hides specific navigation and footer links across all pages
@@ -135,10 +134,42 @@
     
     // Function to add hidden class for CSS-based hiding (backup method)
     function addHiddenClasses() {
-        // Add CSS for hidden items
+        // Add CSS for hidden items with specific selectors
         const style = document.createElement('style');
         style.textContent = `
             .menu-item-hidden {
+                display: none !important;
+            }
+            
+            /* Hide specific menu items by href - Production backup */
+            a[href*="schedule.html"],
+            a[href*="match-results.html"],
+            a[href*="videos.html"],
+            a[href*="tickets.html"],
+            a[href*="awards.html"],
+            a[href*="faq.html"],
+            a[href*="gallery.html"],
+            a[href*="home-2.html"],
+            a[href*="home-3.html"],
+            a[href*="news.html"],
+            a[href*="store.html"],
+            a[href*="table.html"] {
+                display: none !important;
+            }
+            
+            /* Hide table sections */
+            .table-heading-wrapper,
+            .table-scrolling-wrapper,
+            .table-page-row,
+            .full-width-row-wrapper,
+            .table-team-wrapper,
+            .table-page-first-cell,
+            .table-teams-name,
+            .matches-table,
+            .table-title,
+            .table-text,
+            .h4-black.h4-table,
+            .table-paragraph {
                 display: none !important;
             }
         `;
@@ -147,6 +178,9 @@
     
     // Run when DOM is ready
     function init() {
+        // Add CSS classes immediately
+        addHiddenClasses();
+        
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
                 hideMenuItems();
@@ -156,13 +190,30 @@
             hideMenuItems();
             hideTableSection();
         }
-        // Also run after a short delay to catch any dynamically loaded content
+        
+        // Multiple fallback timers for production environments
+        setTimeout(function() {
+            hideMenuItems();
+            hideTableSection();
+        }, 100);
+        
         setTimeout(function() {
             hideMenuItems();
             hideTableSection();
         }, 500);
-        // Add CSS classes
-        addHiddenClasses();
+        
+        setTimeout(function() {
+            hideMenuItems();
+            hideTableSection();
+        }, 1000);
+        
+        // Also run when window loads (for Netlify)
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                hideMenuItems();
+                hideTableSection();
+            }, 100);
+        });
     }
     
     // Initialize the script
@@ -198,40 +249,4 @@
         });
     }
     
-})(); 
-=======
-// List of menu items to hide (by href or text content)
-const itemsToHide = [
-    // Navigation links
-    'schedule.html',
-    'match-results.html',
-    'videos.html', 
-    'tickets.html',
-    'awards.html',
-    'faq.html',
-    'gallery.html',
-    'home-2.html',
-    'home-3.html',
-    'news.html',
-    'store.html',
-    // Text-based matches for dropdown links
-    'Schedule',
-    'Results',
-    'Videos',
-    'Tickets', 
-    'Awards',
-    'FAQ',
-    'Gallery',
-    'Home 2',
-    'Home 3',
-    'News',
-    'Store',
-    'Game Details',
-    'Shop',
-    'News Details',
-    'Store Details',
-    'Players Details',
-    'Table',
-    'table.html'
-]; 
->>>>>>> 15cd42b393585bf824d66117c869c0880d58f028
+})();
