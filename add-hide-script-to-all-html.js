@@ -6,7 +6,11 @@ const path = require('path');
  */
 
 const scriptTag = '  <script src="js/hide-menu-items.js" type="text/javascript"></script>';
+<<<<<<< HEAD
+const htmlDirectory = './'; // Current directory (html folder)
+=======
 const htmlDirectory = './html'; // HTML files are in the html subdirectory
+>>>>>>> 15cd42b393585bf824d66117c869c0880d58f028
 
 // Function to get all HTML files
 function getHtmlFiles(dir) {
@@ -45,12 +49,15 @@ function addScriptToHtmlFile(filePath) {
 function main() {
     console.log('🚀 Starting to add hide-menu-items.js to all HTML files...\n');
     
+<<<<<<< HEAD
+=======
     // Check if html directory exists
     if (!fs.existsSync(htmlDirectory)) {
         console.log(`❌ HTML directory not found: ${htmlDirectory}`);
         return;
     }
     
+>>>>>>> 15cd42b393585bf824d66117c869c0880d58f028
     const htmlFiles = getHtmlFiles(htmlDirectory);
     
     if (htmlFiles.length === 0) {
@@ -58,7 +65,11 @@ function main() {
         return;
     }
     
+<<<<<<< HEAD
+    console.log(`📁 Found ${htmlFiles.length} HTML files:`);
+=======
     console.log(`📁 Found ${htmlFiles.length} HTML files in ${htmlDirectory}:`);
+>>>>>>> 15cd42b393585bf824d66117c869c0880d58f028
     htmlFiles.forEach(file => console.log(`   - ${file}`));
     console.log('');
     
